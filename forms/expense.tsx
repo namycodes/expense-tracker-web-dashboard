@@ -27,7 +27,7 @@ import { z } from "zod";
 
 export default function ExpenseForm() {
 	const [isSubmiting, setIsSubmiting] = useState<boolean>(false);
-	// const queryClient = useQueryClient();
+	const queryClient = useQueryClient();
 	const form = useForm<z.infer<typeof ExpenseSchema>>({
 		resolver: zodResolver(ExpenseSchema),
 		defaultValues: {
@@ -39,9 +39,6 @@ export default function ExpenseForm() {
 	});
 
 	const onSubmit = async (values: z.infer<typeof ExpenseSchema>) => {
-		// mutation.mutate({
-		// 	...values,
-		// });
 		setIsSubmiting(true);
 		try {
 			const response = await fetch("/api/expenses", {
@@ -52,9 +49,13 @@ export default function ExpenseForm() {
 			});
 			if (response.ok) {
 				const { data } = await response.json();
-				const { preferences } = data;
-				console.log(preferences);
+				const { newExpense } = data;
+				console.log("This is the new data", newExpense);
 				setIsSubmiting(false);
+				queryClient.setQueryData(["expenses"], (oldData) => [
+					...oldData,
+					newExpense,
+				]);
 				form.reset();
 			}
 			if (!response.ok) {
@@ -68,13 +69,6 @@ export default function ExpenseForm() {
 		}
 	};
 
-	// const mutation = useMutation({
-	// 	mutationFn: onSubmit,
-	// 	onSuccess: () => {
-	// 		// Invalidate and refetch
-	// 		queryClient.invalidateQueries({ queryKey: ["expenses"] });
-	// 	},
-	// });
 	return (
 		<Form {...form}>
 			<form

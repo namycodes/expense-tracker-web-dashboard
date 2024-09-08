@@ -60,7 +60,7 @@ export default function LoginForm() {
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="flex flex-col gap-6 h-full"
+				className="flex flex-col gap-5 h-full"
 			>
 				{errMsg !== "" ? (
 					<h1 className="text-red-700 text-center text-sm">{errMsg}</h1>

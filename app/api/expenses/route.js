@@ -3,7 +3,11 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const COOKIE_NAME = process.env.NEXT_PUBLIC_COOKIE_NAME;
-export async function GET() {
+export async function GET(request) {
+
+	const url = new URL(request.url)
+	const page = url.searchParams.get('page')
+
 	const cookieStorage = cookies();
 	const token = cookieStorage.get(COOKIE_NAME);
 	if (!token || token.value === undefined) {
@@ -14,7 +18,7 @@ export async function GET() {
 	);
 	console.log(decoded);
 	try {
-		const response = await fetch(`${API_URL}/expenses/${decoded?._id}`, {
+		const response = await fetch(`${API_URL}/expenses/${decoded?._id}?page=${page}&limit=3`, {
 			headers: {
 				Authorization: `Bearer ${token.value}`,
 			},
