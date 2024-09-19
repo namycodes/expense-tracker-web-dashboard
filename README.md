@@ -77,17 +77,16 @@ To run the Expense Tracker locally, follow these steps:
 Open your browser and go to `http://localhost:3000` to access the app.
 
 ## Team Members
-- **Alice Johnson** (Project Manager)
-- **Bob Smith** (Frontend Developer)
-- **Charlie Lee** (Backend Developer)
-- **Diana Kim** (UX/UI Designer)
+- **Emmanuel Namy Mubila** (Backend developer)
+- **Emmanuel Ohwoka** (Frontend Developer)
+- **Christy Odumor** (Fronted Developer / UI/UX Designer)
 
 ## Timeline
-- **Research and Planning**: Jan 1 - Jan 15
-- **Design**: Jan 16 - Feb 10
-- **Development**: Feb 11 - Apr 15
-- **Testing**: Apr 16 - May 5
-- **Launch**: May 6
+- **Research and Planning**: Sept 1 - Sept 4
+- **Design**: Sept 5 - Sept 10
+- **Development**: Sept 11 - Date
+- **Testing**: Pending
+- **Launch**: Pending
 
 ## Target Audience
 The Expense Tracker is designed for individuals and families who want to take control of their finances, from students to professionals looking to budget more effectively.
